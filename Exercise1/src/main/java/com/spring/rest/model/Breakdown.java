@@ -39,13 +39,14 @@ public class Breakdown {
         return false;
     }
 
-    public void updatePercentage(String key, String percentage) {
+    public void updatePercentage(String percentage, String key) {
         for (BreakdownInner inner: breakdown) {
             if (inner.getKey().equals(key)) {
                 double value = Double.parseDouble(percentage) + Double.parseDouble(inner.getPercentage());
                 inner.setPercentage(Double.toString(value));
+                return;
+
             }
-            return;
         }
     }
 
