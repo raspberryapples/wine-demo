@@ -50,6 +50,7 @@
 .winesearch-searchbar {
     display: flex;
     flex-direction: row;
+    
 }
 
 
@@ -62,7 +63,9 @@
     padding-left: 44px;
     padding-right: 44px;
     display: flex;
+    border: 1px solid #CCCCCC;
     flex-direction: row;
+    
 }
 
 .winesearch-textinput-searchicon {
@@ -85,8 +88,89 @@
 
 }
 
-.winesearch-textinput-closeicon:active {
-    color: red;
-    
+.winesearch-textinput-closeicon:hover {
+    cursor: pointer;
+}
+
+
+.winesearch-results {
+
+    width: 100%;
+}
+
+
+.winesearch-result {
+    height: 56px;
+    border-right: 1px solid #CCCCCC;
+    border-left: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.winesearch-result-title {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    font-family: "Montserrat";
+    font-size: 15px;
+
+}
+
+.winesearch-result-title-same {
+
+    color: turquoise;
+    padding-left: 12px;
+
+}
+
+.winesearch-result-title-different {
+
+    color: #0F1010;
+    font-style: normal;
+
+}
+
+.winesearch-result-description {
+    display: flex;
+    flex-direction: row;
+    padding-left: 12px;
+    font-family: "Montserrat";
+    font-size: 13px;
+
+}
+
+.winesearch-result-description-same {
+
+    color: turquoise;
+}
+
+.winesearch-result-description-different {
+
+    color: #3A3B3B;
+}
+
+.winesearch-result-righttext {
+    position: absolute;
+    font-family: "Montserrat";
+    font-size: 13px;
+    color:#0F1010;
+    left: auto;
+    right: 12px;
+
+}
+
+
+.winesearch-result:hover {
+    background: #CCCCCC;
+    cursor: pointer;
+}
+
+.winesearch-result-row {
+    padding-top: 6px;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
 
 }

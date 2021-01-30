@@ -16,7 +16,7 @@ public class WineController {
     private WineDAO wineDAO;
 
 
-
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(path = "/api/breakdown/year/{lotCode}", produces =  "application/json")
     public Breakdown getPercentageForYear(@PathVariable String lotCode) {
         Breakdown breakdown = new Breakdown("year");
@@ -42,6 +42,7 @@ public class WineController {
         return breakdown;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(path = "/api/breakdown/variety/{lotCode}", produces =  "application/json")
     public Breakdown getPercentageForVariety(@PathVariable String lotCode) {
         Breakdown breakdown = new Breakdown("variety");
@@ -67,6 +68,7 @@ public class WineController {
         return breakdown;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(path = "/api/breakdown/region/{lotCode}", produces =  "application/json")
     public Breakdown getPercentageForRegion(@PathVariable String lotCode) {
         Breakdown breakdown = new Breakdown("region");
@@ -92,6 +94,7 @@ public class WineController {
         return breakdown;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(path = "/api/breakdown/year-variety/{lotCode}", produces =  "application/json")
     public Breakdown getPercentageForYearVariety(@PathVariable String lotCode) {
         Breakdown breakdown = new Breakdown("year-variety");
@@ -119,6 +122,7 @@ public class WineController {
 
 
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(path = "/api/search/{text}", produces = "application/json")
     public List<WineSearch> searchWine(@PathVariable String text) {
 
@@ -133,16 +137,19 @@ public class WineController {
             if (description == null) {
                 description = "";
             }
+            String volume = wine.getVolume();
+            String tankCode = wine.getTankCode();
 
             if (lotCode.startsWith(text) || description.startsWith(text)) {
 
-                wineSearch.add(new WineSearch(lotCode, description));
+                wineSearch.add(new WineSearch(lotCode, description, volume, tankCode));
             }
 
         }
         return wineSearch;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(path = "/api/details/{lotCode}", produces = "application/json")
     public WineDetails getWineDetails(@PathVariable String lotCode) {
         Wines wines = wineDAO.getAllWines();
