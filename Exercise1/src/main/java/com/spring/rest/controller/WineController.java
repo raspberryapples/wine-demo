@@ -1,12 +1,12 @@
 package com.spring.rest.controller;
 
 import com.spring.rest.dao.WineDAO;
-import com.spring.rest.model.Breakdown;
-import com.spring.rest.model.Component;
-import com.spring.rest.model.Wine;
-import com.spring.rest.model.Wines;
+import com.spring.rest.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @RestController
@@ -26,10 +26,11 @@ public class WineController {
         for (Wine wine : wines.getWineList()) {
             if (wine.getLotCode().equals(lotCode)) {
                 for (Component component: wine.getComponents()) {
-                    if (breakdown.hasKey(component.getYear())) {
-                        breakdown.updatePercentage(component.getPercentage(), component.getYear());
+                    String key = component.getYear();
+                    if (breakdown.hasKey(key)) {
+                        breakdown.updatePercentage(component.getPercentage(), key);
                     } else {
-                        breakdown.add(component.getPercentage(), component.getYear());
+                        breakdown.add(component.getPercentage(), key);
                     }
                 }
                 break;
@@ -50,10 +51,11 @@ public class WineController {
         for (Wine wine : wines.getWineList()) {
             if (wine.getLotCode().equals(lotCode)) {
                 for (Component component: wine.getComponents()) {
-                    if (breakdown.hasKey(component.getVariety())) {
-                        breakdown.updatePercentage(component.getPercentage(), component.getVariety());
+                    String key = component.getVariety();
+                    if (breakdown.hasKey(key)) {
+                        breakdown.updatePercentage(component.getPercentage(), key);
                     } else {
-                        breakdown.add(component.getPercentage(), component.getVariety());
+                        breakdown.add(component.getPercentage(), key);
                     }
                 }
                 break;
@@ -74,10 +76,11 @@ public class WineController {
         for (Wine wine : wines.getWineList()) {
             if (wine.getLotCode().equals(lotCode)) {
                 for (Component component: wine.getComponents()) {
-                    if (breakdown.hasKey(component.getRegion())) {
-                        breakdown.updatePercentage(component.getPercentage(), component.getRegion());
+                    String key = component.getRegion();
+                    if (breakdown.hasKey(key)) {
+                        breakdown.updatePercentage(component.getPercentage(), key);
                     } else {
-                        breakdown.add(component.getPercentage(), component.getRegion());
+                        breakdown.add(component.getPercentage(), key);
                     }
                 }
                 break;
@@ -114,6 +117,43 @@ public class WineController {
         return breakdown;
     }
 
+
+
+    @GetMapping(path = "/api/search/{text}", produces = "application/json")
+    public List<WineSearch> searchWine(@PathVariable String text) {
+
+        Wines wines = wineDAO.getAllWines();
+        List<WineSearch> wineSearch = new ArrayList<>();
+
+        for (Wine wine : wines.getWineList()) {
+
+            String lotCode = wine.getLotCode();
+            String description = wine.getDescription();
+
+            if (description == null) {
+                description = "";
+            }
+
+            if (lotCode.startsWith(text) || description.startsWith(text)) {
+
+                wineSearch.add(new WineSearch(lotCode, description));
+            }
+
+        }
+        return wineSearch;
+    }
+
+    @GetMapping(path = "/api/details/{lotCode}", produces = "application/json")
+    public WineDetails getWineDetails(@PathVariable String lotCode) {
+        Wines wines = wineDAO.getAllWines();
+        for (Wine wine : wines.getWineList()) {
+            if (lotCode.equals(wine.getLotCode())) {
+                return new WineDetails(wine.getLotCode(), wine.getVolume(), wine.getDescription(), wine.getTankCode(), wine.getProductState(), wine.getOwnerName());
+            }
+        }
+        return new WineDetails(null,null,null,null, null, null);
+
+    }
 
 
 

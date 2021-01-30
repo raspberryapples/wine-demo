@@ -7,6 +7,9 @@ import java.util.List;
 
 public class Breakdown {
 
+    private String breakDownType;
+    public List<BreakdownInner> breakdown = new ArrayList<>();
+
     public String getBreakDownType() {
         return breakDownType;
     }
@@ -14,11 +17,6 @@ public class Breakdown {
     public List<BreakdownInner> getBreakdown() {
         return breakdown;
     }
-
-    private String breakDownType;
-
-    public List<BreakdownInner> breakdown = new ArrayList<>();
-
     public Breakdown(String breakDownType) {
         this.breakDownType = breakDownType;
     }
@@ -39,6 +37,7 @@ public class Breakdown {
         return false;
     }
 
+    // A more efficient updatePercentage function could be created, since data required is small a simplistic one was made.
     public void updatePercentage(String percentage, String key) {
         for (BreakdownInner inner: breakdown) {
             if (inner.getKey().equals(key)) {
