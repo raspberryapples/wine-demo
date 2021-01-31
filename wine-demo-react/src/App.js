@@ -17,7 +17,7 @@ export default function App() {
 
         <Switch>
    
-          <Route path="/product">
+          <Route path="/product/:lotcode">
             <ProductView />
           </Route>
           <Route path="/">

@@ -12,11 +12,13 @@ import java.util.List;
 @RestController
 public class WineController {
 
+    final String reactHost = "http://localhost:3000";
+
     @Autowired
     private WineDAO wineDAO;
 
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = reactHost)
     @GetMapping(path = "/api/breakdown/year/{lotCode}", produces =  "application/json")
     public Breakdown getPercentageForYear(@PathVariable String lotCode) {
         Breakdown breakdown = new Breakdown("year");
@@ -42,7 +44,7 @@ public class WineController {
         return breakdown;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = reactHost)
     @GetMapping(path = "/api/breakdown/variety/{lotCode}", produces =  "application/json")
     public Breakdown getPercentageForVariety(@PathVariable String lotCode) {
         Breakdown breakdown = new Breakdown("variety");
@@ -68,7 +70,7 @@ public class WineController {
         return breakdown;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = reactHost)
     @GetMapping(path = "/api/breakdown/region/{lotCode}", produces =  "application/json")
     public Breakdown getPercentageForRegion(@PathVariable String lotCode) {
         Breakdown breakdown = new Breakdown("region");
@@ -94,7 +96,7 @@ public class WineController {
         return breakdown;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = reactHost)
     @GetMapping(path = "/api/breakdown/year-variety/{lotCode}", produces =  "application/json")
     public Breakdown getPercentageForYearVariety(@PathVariable String lotCode) {
         Breakdown breakdown = new Breakdown("year-variety");
@@ -122,7 +124,7 @@ public class WineController {
 
 
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = reactHost)
     @GetMapping(path = "/api/search/{text}", produces = "application/json")
     public List<WineSearch> searchWine(@PathVariable String text) {
 
@@ -149,7 +151,7 @@ public class WineController {
         return wineSearch;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = reactHost)
     @GetMapping(path = "/api/details/{lotCode}", produces = "application/json")
     public WineDetails getWineDetails(@PathVariable String lotCode) {
         Wines wines = wineDAO.getAllWines();
