@@ -20,7 +20,7 @@ reactHost in the WineController.java file in Exercise1 and the apihost in config
 Improvements:
 - A more scalable way of storing and sorting the data could be used in Exercises1. A simple ArrayList was used to store the data for simplicity.
 - Lazy loading could be implemented in the querys for queries with large amounts of data. 
-- For a larger project, the react components should be split into smaller components such as the table within the product page.
+- For a larger project, the react components should be split into smaller components such as the table within the product page and to improve the organisation of the folders.
 - See more could be made more advanced to implement lazy loading, a simple counter was used in the creation of the current one.
 
 ![Image1](Image1.PNG)
