@@ -29,6 +29,17 @@
 
 }
 
+.productview-editbutton-editing {
+    position: absolute;
+    right: 0px;
+    left: auto;
+    width: 56px;
+    height: 56px;
+    cursor: pointer;
+    background-color: red;
+
+}
+
 
 .productview-wicon {
     width: 30px;

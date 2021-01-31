@@ -20,7 +20,12 @@ class ProductView extends Component {
             tableInfo: {},
             tableType: "",
             showMore: 1,
+            editMode: false,
         }
+    }
+
+    onEditButtonPress = () => {
+        this.setState({editMode: !this.state.editMode})
     }
 
     componentDidMount() {
@@ -121,7 +126,8 @@ class ProductView extends Component {
         return (
 
             <div className="productview-container">
-                <img className="productview-editbutton" src={EditIcon} alt="" />
+               
+                <img className={this.state.editMode? "productview-editbutton-editing":"productview-editbutton"} src={EditIcon} alt="" onClick={this.onEditButtonPress}/>
 
                 <div className="productview-backbutton" onClick={() => this.props.history.goBack()}>
                     <Icon>arrow_back</Icon>
