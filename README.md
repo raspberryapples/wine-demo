@@ -2,6 +2,12 @@
 
 Code Challenge
 
+Summary
+1. Spring Boot / Java
+First time using spring boot. Created a few basic querys. Just uses an Arraylist to store the data so not very scalable.
+2. React
+Basic wine searching app. Uses the querys created using Spring boot. Particularly enjoyed this part. As not very large the components are only coded in 2 files.
+
 How to run:
 
 install yarn
