@@ -6,6 +6,7 @@ install yarn
 install react
 
 open wine-demo-react folder
+yarn install
 yarn start
 
 open Exercise1 folder
