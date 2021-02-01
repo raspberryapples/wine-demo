@@ -97,7 +97,7 @@ class ProductView extends Component {
                         }
                         if (i == this.state.showMore*5) {
                             return (
-                                <div className="productview-table-row">
+                                <div key={i} className="productview-table-row">
                                     <div className="productview-showmore" onClick={() => this.setState({showMore: this.state.showMore+1})}>
                                         Show More
                                         <Icon className="productview-showmore-icon ">expand_more</Icon>
