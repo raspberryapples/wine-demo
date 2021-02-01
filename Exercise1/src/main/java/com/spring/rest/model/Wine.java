@@ -22,6 +22,10 @@ public class Wine {
 
     }
 
+    public Wine() {
+        this.components = new Component[0];
+    }
+
     public String getLotCode() {
         return lotCode;
     }

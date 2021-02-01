@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
+import java.util.ArrayList;
 
 
 @Repository
@@ -41,6 +42,19 @@ public class WineDAO {
 
     public Wines getAllWines() {
         return wines;
+    }
+
+    public Wine getWine(String lotCode) {
+
+        Wines wineList = getAllWines();
+        for (Wine wine: wineList.getWineList()) {
+            if (wine.getLotCode().equals(lotCode)) {
+                return wine;
+            }
+        }
+
+        return (new Wine());
+
     }
 
 

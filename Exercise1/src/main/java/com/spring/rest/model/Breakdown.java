@@ -25,7 +25,7 @@ public class Breakdown {
         Collections.sort(breakdown);
     }
 
-    public void add(String percentage, String key) {
+    private void add(String percentage, String key) {
         breakdown.add(new BreakdownInner(percentage, key));
     }
 
@@ -38,7 +38,7 @@ public class Breakdown {
     }
 
     // A more efficient updatePercentage function could be created, since data required is small a simplistic one was made.
-    public void updatePercentage(String percentage, String key) {
+    private void updatePercentage(String percentage, String key) {
         for (BreakdownInner inner: breakdown) {
             if (inner.getKey().equals(key)) {
                 double value = Double.parseDouble(percentage) + Double.parseDouble(inner.getPercentage());
@@ -48,6 +48,14 @@ public class Breakdown {
             }
         }
     }
+
+    public void addKey(String key, String percentage) {
+        if (hasKey(key)) {
+            updatePercentage(percentage, key);
+        } else {
+            add(percentage, key);
+        }
+    };
 
 }
 
